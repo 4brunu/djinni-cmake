@@ -27,8 +27,9 @@ This is a brief, yet incomplete list of requirements:
 # Compile djinni-cmake: the core way.
 
 The core way can be used to compile the `djinni_cmake` library for the host
-system, as well as to extract the documentation. It cannot be used to compile
-the library for the target systems (as an example, Android or iOS).
+system, as well as to extract the documentation.<br/>
+It cannot be used to compile the library for the target systems (as an
+example, Android or iOS).
 
 First of all, run the following command from the root directory:
 
@@ -40,12 +41,12 @@ It could happen that you will never use this script again in the future, so feel
 free to forget about it.
 
 After that, because in-source build is not allowed, you must move into the
-build subdirectory and run the following commands:
+`build` subdirectory and run the following commands:
 
 * `cd build`
 * `cmake ..`
 
-By default, the build system sets internally the build type debug, thus the
+By default, the build system sets internally the build type _Debug_, thus the
 above commands will end in a bigger library which contains also the debug
 symbols and will have been compiled with no optimizations at all.<br/>
 In order to get the release version, use the following commands instead:
@@ -61,18 +62,18 @@ kindly invite you to point out any inconsistency).
 
 It follows a summary of the most interesting targets from the available ones:
 
-* `make`                # Do you really need more details? :-)
-* `make djinni_cmake`   # Compile the `djinni_cmake` library
-* `make docs`           # Extract the documentation
-* `make install`        # Install all the artifacts in `<djinni_cmake.dir>/install/default`
-* `make package`        # Create a package that contains... well, almost everything
+* `make` - Do you really need more details? :-)
+* `make djinni_cmake` - Compile the `djinni_cmake` library
+* `make docs` - Extract the documentation
+* `make install` - Install all the artifacts in `<djinni_cmake.dir>/install/default`
+* `make package` - Create a package that contains... well, almost everything
 
 For further details and the complete list of targets, please consider to start
 studying how the fantastic world of cmake and make works.
 
-Because of an arguable bug of cmake, making the targets _install_ and _package_
+Because of an arguable issue of cmake, making the targets _install_ and _package_
 won't work out-of-the-box for they don't depend on the targets _djinni_cmake_ and
-_docs_, even though they require them to be done.<br/>
+_docs_, even though they require them to be built.<br/>
 You have to compile them before to make the above mentioned targets:
 
 * `make`
@@ -81,7 +82,7 @@ You have to compile them before to make the above mentioned targets:
 * `make package`
 
 You can rebuild everything from scratch by simply deleting the content of the
-build directory, as an example by using the following commands:
+`build` directory, as an example by using the following commands:
 
 * `cd build`
 * `rm -rf *`
@@ -115,5 +116,5 @@ directories.
 # Does it work?
 
 For further details, doubts and/or errors in the build system, please feel free
-to contact me.
-Have a look at the authors file for the contacts.
+to contact me.<br/>
+Have a look at the `AUTHORS` file for further details.
