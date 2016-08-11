@@ -65,16 +65,23 @@ It follows a summary of the most interesting targets from the available ones:
 * `make` - Do you really need more details? :-)
 * `make djinni_cmake` - Compile the `djinni_cmake` library
 * `make docs` - Extract the documentation
+* `make test` - Run all the available tests
 * `make install` - Install all the artifacts in `<djinni_cmake.dir>/install/default`
 * `make package` - Create a package that contains... well, almost everything
 
 For further details and the complete list of targets, please consider to start
 studying how the fantastic world of cmake and make works.
 
-Because of an arguable issue of cmake, making the targets _install_ and _package_
-won't work out-of-the-box for they don't depend on the targets _djinni_cmake_ and
-_docs_, even though they require them to be built.<br/>
-You have to compile them before to make the above mentioned targets:
+Because of a arguable issue of cmake, running the target _test_ won't work for
+it doesn't depend on the tests themselves. You have to compile them before to
+run the above mentioned target.<br/>
+To execute the available tests, run the following commands:
+
+* `make`
+* `make test`
+
+The same applies for the targets _install_ and _package_, for which the
+following commands should be executed:
 
 * `make`
 * `make docs`

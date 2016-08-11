@@ -32,6 +32,11 @@ git submodule update --init # --recursive
 cd "$DIR"/deps/djinni
 make -j4 djinni
 
+rm -rf $DIR/deps/googletest/build
+mkdir $DIR/deps/googletest/build
+cd $DIR/deps/googletest/build
+cmake .. && make -j4
+
 #
 # go back home
 #

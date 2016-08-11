@@ -78,6 +78,7 @@ set(PROJECT_OBJC_DIR objc)
 set(PROJECT_JAVA_DIR java)
 set(PROJECT_DOCS_DIR docs)
 set(PROJECT_SRC_DIR src)
+set(PROJECT_TEST_DIR test)
 
 set(PROJECT_RUNTIME_OUTPUT_DIRECTORY bin)
 set(PROJECT_LIBRARY_OUTPUT_DIRECTORY lib)
@@ -184,6 +185,7 @@ endif(POLLY_TOOLCHAIN_TAG)
 
 if(NOT POLLY_TOOLCHAIN_TAG)
     # documentation and tests are available only to the core way
+    find_package(GoogleTest)
     find_package(Doxygen 1.8)
     find_package(JSON11 REQUIRED)
     find_package(Threads REQUIRED)
@@ -206,9 +208,13 @@ set(TARGET_DOCS docs)
 
 add_subdirectory(${PROJECT_SRC_DIR})
 
-if(${DOXYGEN_FOUND})
+if(DOXYGEN_FOUND)
     add_subdirectory(${PROJECT_DOCS_DIR})
-endif(${DOXYGEN_FOUND})
+endif(DOXYGEN_FOUND)
+
+if(GOOGLETEST_FOUND)
+    add_subdirectory(${PROJECT_TEST_DIR})
+endif(GOOGLETEST_FOUND)
 
 #
 # Keep your stuff and go further away, foolish.
@@ -224,7 +230,7 @@ set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Djinni CMake")
 set(CPACK_PACKAGE_FILE_NAME ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION})
 set(CPACK_SOURCE_PACKAGE_FILE_NAME ${CPACK_PACKAGE_FILE_NAME}-src)
 set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/LICENSE)
-set(CPACK_RESOURCE_FILE_README ${CMAKE_SOURCE_DIR}/README)
+set(CPACK_RESOURCE_FILE_README ${CMAKE_SOURCE_DIR}/README.md)
 set(CPACK_GENERATOR TGZ)
 set(CPACK_SOURCE_GENERATOR TGZ)
 set(CPACK_PACKAGING_INSTALL_DIRECTORY "djinni_cmake-${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}")
