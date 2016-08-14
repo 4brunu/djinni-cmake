@@ -40,6 +40,13 @@ the `djinni-cmake` library won't compile without them being correctly set.<br/>
 It could happen that you will never use this script again in the future, so feel
 free to forget about it.
 
+After building dependencies, you should run the following command:
+
+* `./idl.sh`
+
+This will regenerate any interface bindings that are defined in the interface
+definition file.
+
 After that, because in-source build is not allowed, you must move into the
 `build` subdirectory and run the following commands:
 
